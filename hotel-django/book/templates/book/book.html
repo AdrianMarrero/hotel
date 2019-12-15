@@ -1,0 +1,111 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Tu reserva</h2>
+    </div>
+    <form class="needs-validation" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Factura</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                    <h6 class="my-0">
+                        {% if data_room.room_type == '1' %}
+                            Habitación individual
+                        {% elif data_room.room_type == '2' %}
+                            Habitación doble
+                        {% elif data_room.room_type == '3' %}
+                            Habitación triple
+                        {% elif data_room.room_type == '4' %}
+                            Habitación cuádruple
+                        {%endif%} 
+                    </h6>
+                <small class="text-muted">Precio por noche</small>
+              </div>
+              <span class="text-muted">{{data_room.price_room}}€</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <div>
+                <h6 class="my-0">Noches</h6>
+              </div>
+              <span class="text-muted">{{days}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (€)</span>
+              <strong>{{form.total_price}}</strong>
+            </li>
+          </ul>
+        </div>
+   
+
+    <div class="col-md-8 order-md-1">
+        <h4 class="mb-3">Datos de contacto</h4>
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label>Fecha de Entrada</label>
+                {{form.date_start}}
+              </div>
+              <div class="col-md-4 mb-3">
+                <label>Fecha de Salida</label>
+                 {{form.date_end}}
+              </div>
+              <div class="col-md-4 mb-3">
+                <label>Numero de Personas</label>
+                 {{form.n_persons}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label>Nombre</label>
+                {{form.name}}
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Apellidos</label>
+                 {{form.surname}}
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label>Email </label>
+               {{form.email}}
+            </div>
+
+            <hr class="mb-4">
+
+            <h4 class="mb-3">Método de Pago</h4>
+
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label>Nombre de la tarjeta</label>
+                {{form.name_of_card}}
+              </div>
+              <div class="col-md-6 mb-3">
+                <label>Número de la tarjeta</label>
+                {{form.credit_card_number}}
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 mb-3">
+                <label>Notas (opcional)</label>
+                {{form.notes}}
+              </div>
+            </div>
+
+            <hr class="mb-4">{{data_room.number_room}}
+            <input type="hidden" name="number_book_conf" value="{{data_room.number_room}}">
+            <input type="hidden" name="days" value="{{days}}">
+            <input type="hidden" name="save" value="True">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Reservar</button>
+        </div>
+      </form>
+      </div>
+{% endblock %}

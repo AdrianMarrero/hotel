@@ -1,0 +1,57 @@
+
+{% for room in rooms %} 
+    <div class="album py-2 bg-light shadow-sm">
+        <div class="container card padding-20">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="{{room.image.url}}" class="img_room">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-text">
+                        {% if room.room_type == '1' %}
+                            Habitación individual
+                        {% elif room.room_type == '2' %}
+                            Habitación doble
+                        {% elif room.room_type == '3' %}
+                            Habitación triple
+                        {% elif room.room_type == '4' %}
+                            Habitación cuádruple
+                        {%endif%}    
+                        </h5>
+                        <h6>{{room.name_room}}</h6>
+                        <p class="card-text">Precio por noche: <span>{{room.price_room}}€</span></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            {% if request.user.is_authenticated %}
+                                <div class="btn-group">
+                                <form action="/book/" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="days" value="2">
+                                    <input type="hidden" name="number_room" value="{{room.number_room}}">
+                                    <input type="hidden" name="start" value=01/12/2019>
+                                    <input type="hidden" name="end" value=03/12/2019>
+                                    <input type="hidden" name="persons" value=2>
+                                    <input type="hidden" name="save" value="False">
+                                    <button type="submit" class="btn btn-primary mb-2" onclick="">Reservar</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                            <small class="text-muted">Quedan
+                                {% if room.room_type == '1' %}
+                                   {{singles_room}}
+                                {% elif room.room_type == '2' %}
+                                    {{double_room}}
+                                {% elif room.room_type == '3' %}
+                                    {{triple_room}}
+                                {% elif room.room_type == '4' %}
+                                    {{quadruple}}
+                                {%endif%} 
+                             habitaciones disponibles</small>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endfor %}

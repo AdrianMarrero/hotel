@@ -1,0 +1,114 @@
+/* Common class*/
+.margin-top-6{
+    margin-top: 6px;
+}
+.margin-top-20{
+    margin-top: 20px;
+}
+.padding-20{
+    padding: 20px;
+}
+/*End common class*/
+
+.jumbotron{
+    background-image: url('../img/imagen-hotel.jpg');
+    background-size: cover;
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 415px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat
+}
+
+.booking_area{
+    text-transform: uppercase;
+    top: 0;
+    z-index: 200;
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
+    top: 50px;
+}
+.booking{
+    background: #313a45 none repeat scroll 0 0;
+    font-family: "Karla",sans-serif;
+    min-height: 94px;
+    padding: 4px 25px;
+    position: relative;
+}
+.booking p{
+    margin-bottom: 0;
+}
+.booking p:first{
+    margin-top: 3px;
+}
+.room_book {
+    border-right: 1px solid #475362;
+    margin-right: 7%;
+    color: #fff;
+    font-weight: 900;
+    font-size: 18px;
+    margin-bottom: 0;
+    padding-right: 15px;
+}
+.booking .form-control{
+    background: #313a45 none repeat scroll 0 0;
+    height: 44px;
+    border: none;
+    font-size: 12px;
+    margin-top: 20px;
+    border-bottom: 1px solid #fff;
+    border-radius: 0;
+    color: #fff;
+}
+.booking select{
+    padding: 7px;
+}
+.btn-outline-secondary{
+    color: #fff;
+    margin-top: 20px;
+}
+.gj-datepicker-bootstrap [role=right-icon] button{
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #fff;
+}
+.gj-datepicker-bootstrap [role=right-icon] button .gj-icon, .gj-datepicker-bootstrap [role=right-icon] button .material-icons{
+    color:#fff
+}
+.btn-primary{
+    border-radius: 0;
+    border-color:0; 
+    background-color:#f7c411 none repeat scroll 0 0;
+    border-color: #f7c411;
+}
+.btn.btn-primary{
+    background-color: #f7c411;
+    color: #313a45;
+}
+.btn.btn-primary:active{
+    background-color: #f7c411;
+}
+.btn-primary:hover{
+    background-color: #f7c411;
+    border-color: #f7c411;
+}
+.btn-primary:focus{
+    background: #f7c411;
+    border-color: #f7c411;
+    box-shadow: none;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+    color: #fff;
+    background-color:#f7c411;
+    border-color: #f7c411;
+}
+.img_room{
+    width: 100%;
+}
+.user_text{
+    font-size: 11px;
+    font-style: italic;
+    color: #fff;
+    text-transform: capitalize;
+}
