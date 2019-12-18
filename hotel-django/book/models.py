@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date, datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -23,7 +24,8 @@ class Book(models.Model):
     State = models.CharField(max_length=10, choices=STATE, null=True, blank=True)
     notes = models.TextField(verbose_name='Notas', null=True, blank=True)
     locator = models.CharField(max_length=32, verbose_name="Localizador", null=True, blank=True)
-
+    user_email = models.EmailField(verbose_name="Correo electrónico del usuario")
+    
     class Meta:
         verbose_name = "Reserva"
         verbose_name_plural = "Reservas"

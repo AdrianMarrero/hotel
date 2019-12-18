@@ -1,5 +1,5 @@
 
-{% for room in rooms %} 
+{% for room in rooms %}
     <div class="album py-2 bg-light shadow-sm">
         <div class="container card padding-20">
             <div class="row">
@@ -8,49 +8,51 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <h5 class="card-text">
-                        {% if room.room_type == '1' %}
-                            Habitación individual
-                        {% elif room.room_type == '2' %}
-                            Habitación doble
-                        {% elif room.room_type == '3' %}
-                            Habitación triple
-                        {% elif room.room_type == '4' %}
-                            Habitación cuádruple
-                        {%endif%}    
-                        </h5>
-                        <h6>{{room.name_room}}</h6>
-                        <p class="card-text">Precio por noche: <span>{{room.price_room}}€</span></p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            {% if request.user.is_authenticated %}
-                                <div class="btn-group">
-                                <form action="/book/" method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="days" value="2">
-                                    <input type="hidden" name="number_room" value="{{room.number_room}}">
-                                    <input type="hidden" name="start" value=01/12/2019>
-                                    <input type="hidden" name="end" value=03/12/2019>
-                                    <input type="hidden" name="persons" value=2>
-                                    <input type="hidden" name="save" value="False">
-                                    <button type="submit" class="btn btn-primary mb-2" onclick="">Reservar</button>
-                                    </form>
-                                </div>
-                            {% endif %}
-                            <small class="text-muted">Quedan
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5 class="card-text">
                                 {% if room.room_type == '1' %}
-                                   {{singles_room}}
+                                    Habitación individual
                                 {% elif room.room_type == '2' %}
-                                    {{double_room}}
+                                    Habitación doble
                                 {% elif room.room_type == '3' %}
-                                    {{triple_room}}
+                                    Habitación triple
                                 {% elif room.room_type == '4' %}
-                                    {{quadruple}}
-                                {%endif%} 
-                             habitaciones disponibles</small>
+                                    Habitación cuádruple
+                                {%endif%}    
+                                </h5>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                <small class="text-muted">{{search_form.date_start}} - {{search_form.date_end}}</small>
+                            </div>
+                            <div class="col-md-12 margin-top-10">
+                                <h6>{{room.name_room}}</h6>
+                            </div>
+                            <div class="col-md-12">
+                                <p class="card-text">Precio por noche: <span>{{room.price_room}}€</span></p>
+                            </div>
+                            <div class="col-md-3 margin-top-20">
+                                {% if request.user.is_authenticated %}
+                                    <div class="btn-group">
+                                        <form action="/book/" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="days" value="{{days}}">
+                                            <input type="hidden" name="number_room" value="{{room.number_room}}">
+                                            <input type="hidden" name="start" value="{{search_form.date_start}}">
+                                            <input type="hidden" name="end" value={{search_form.date_end}}>
+                                            <input type="hidden" name="persons" value={{search_form.n_persons}}>
+                                            <input type="hidden" name="save" value="False">
+                                            <button type="submit" class="btn btn-primary mb-2" onclick="">Reservar</button>
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-9 text-right">
+                                <small class="text-muted">{{days}} Noches</small>
+                            </div>
                         </div>
-                    </div>
+                    </div>    
                 </div>
-                
             </div>
         </div>
     </div>

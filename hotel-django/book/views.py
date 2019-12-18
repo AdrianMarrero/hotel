@@ -4,8 +4,13 @@ from .forms import BookForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.utils import timezone
+import random, string
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required
 def book(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
@@ -30,9 +35,12 @@ def book(request):
             if form.is_valid():              
                 record_book = form.save(commit=False)
                 record_book.number_book = number_room
+                locator_id = random_id()
+                record_book.locator = locator_id
+                record_book.user_email = request.user.email
                 record_book.save()
                 form.save_m2m()
-                return redirect('home')
+                return redirect('summary', locator=locator_id)
             else:
                 print(form.errors)
                 return render(request, "book/book.html", {'days':days, 'data_room':data_room, 'form':form})    
@@ -41,3 +49,5 @@ def book(request):
             form = BookForm()
             return render(request, "book/book.html",{'form':form})
 
+def random_id(lenght=20):
+    return ''.join(random.choice(string.ascii_letters + string.digits) for x in range(lenght))

@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+{% for sumary in summary_book %} 
+<main role="main">
+    <section class="jumbotron">
+        <div class="col-md-4 margin-0-auto">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Su reserva:</h4>
+                <p>Acontinuación los datos de su reserva</p>
+                <hr>
+            </div>
+        </div>
+        <div class="col-md-4 margin-0-auto">
+            <div class="card">
+                <div class="card-header">
+                Localizador de su reserva: <strong class="text-danger"">{{sumary.locator}}</strong>
+                </div>
+
+                <div class="card-body">
+                    <p>Reserva realizada por: <strong>{{sumary.name}} {{sumary.surname}}  </strong></p>
+                    <p>Fecha de entrada: <strong>{{sumary.date_start}}</strong></p>
+                    <p>Fecha de salida: <strong>{{sumary.date_end}}</strong></p>
+                    <p>Total días: <strong>{{sumary.days}}</strong></p>
+                    <p>Precio total: <strong>{{sumary.total_price}} Euros</strong></p>
+                    <p class="text-right"><a href="{% url 'home' %}">Ir al inicio</a></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+<main>    
+{% endfor %}
+{% endblock %}

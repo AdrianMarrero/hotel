@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rooms.apps.RoomsConfig',
     'book.apps.BookConfig',
     'core',
+    'summary',
 
 ]
 

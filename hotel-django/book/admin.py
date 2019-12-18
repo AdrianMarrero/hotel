@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Book
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('name', 'surname', 'number_book', 'date_start', 'date_end','days','n_persons','total_price', 'locator')
+    list_display = ('name', 'surname', 'number_book', 'date_start', 'date_end','days','n_persons','total_price','user_email', 'locator')
 
 
 # Register your models here.

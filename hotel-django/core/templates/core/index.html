@@ -5,7 +5,7 @@
     <section class="jumbotron text-center">
         <div class="booking_area">
             <div class="booking">
-                <form id="form1" role="form" action="#" class="">
+                <form id="form1" method="get" class="">
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="room_book border-right-dark-1">
@@ -15,16 +15,16 @@
                         </div>
                         <div class="form-group col-sm-3">
                             <div class="input-group border-bottom-dark-2">
-                                <input class="form-control" id="datepicker" width="350"/>
+                                <input class="form-control" name="date_start" id="datepicker" width="350" placeholder="Entrada"/>
                             </div>
                         </div>
                         <div class="form-group col-sm-3">
                             <div class="input-group border-bottom-dark-2">
-                                <input class="form-control" id="datepicker2" width="350"/>
+                                <input class="form-control" name="date_end" id="datepicker2" width="350" placeholder="Salida"/>
                             </div>
                         </div>
                         <div class="form-group col-sm-2">
-                            <select class="form-control" id="FormControlSelect">
+                            <select name="n_persons" class="form-control" id="FormControlSelect">
                                 <option value="1">1 persona</option>
                                 <option value="2">2 persona</option>
                                 <option value="3">3 persona</option>
@@ -41,7 +41,16 @@
                 </form>
             </div>
         </div>
+        <span id="msj_error" class="msj_error display-none" onclick="hide()"></span>
     </section>
+
+    <nav>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container text-right">
+                <button type="button" class="btn btn-secondary">Secondary</button>
+            </div>
+        </div>
+    </nav>
 
     {% include 'rooms/rooms.html' %}
 </main>

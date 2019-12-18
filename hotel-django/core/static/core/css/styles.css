@@ -2,11 +2,23 @@
 .margin-top-6{
     margin-top: 6px;
 }
+.margin-top-10{
+    margin-top: 10px;
+}
 .margin-top-20{
     margin-top: 20px;
 }
 .padding-20{
     padding: 20px;
+}
+.padding-top-20{
+    padding-top: 20px;
+}
+.margin-0-auto{
+    margin: 0 auto;
+}
+.display-none{
+    display: none;
 }
 /*End common class*/
 
@@ -111,4 +123,12 @@
     font-style: italic;
     color: #fff;
     text-transform: capitalize;
+}
+.msj_error{
+    top: 80px;
+    position: relative;
+    background: #6c757d;
+    padding: 11px;
+    color: #fff;
+    font-weight: 700;
 }
