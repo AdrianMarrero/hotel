@@ -15,12 +15,12 @@
                         </div>
                         <div class="form-group col-sm-3">
                             <div class="input-group border-bottom-dark-2">
-                                <input class="form-control" name="date_start" id="datepicker" width="350" placeholder="Entrada"/>
+                                <input class="form-control" readonly name="date_start" id="datepicker" width="350" placeholder="Entrada"/>
                             </div>
                         </div>
                         <div class="form-group col-sm-3">
                             <div class="input-group border-bottom-dark-2">
-                                <input class="form-control" name="date_end" id="datepicker2" width="350" placeholder="Salida"/>
+                                <input class="form-control" readonly name="date_end" id="datepicker2" width="350" placeholder="Salida"/>
                             </div>
                         </div>
                         <div class="form-group col-sm-2">
@@ -32,10 +32,7 @@
                             </select>
                         </div>
                         <div class="form-group col-sm-2">
-                            {% if request.user.is_authenticated %}
-                                <strong class="user_text">Hola: {{request.user}}</strong>
-                            {% endif %}
-                            <button type="submit" class="btn btn-primary mb-2" onclick="buscar()">Buscar</button>
+                            <button type="submit" class="btn btn-primary mb-2 margin-top-25" onclick="buscar()">Buscar</button>
                         </div>
                     </div>
                 </form>
@@ -45,9 +42,28 @@
     </section>
 
     <nav>
-        <div class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container text-right">
-                <button type="button" class="btn btn-secondary">Secondary</button>
+        <div class="bg-dark padding-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button type="button" class="btn btn-secondary">Secondary</button>
+                    </div>
+                    <div class="col text-right">
+                        {% if not request.user.is_authenticated %}
+                            <a class="btn btn-success" href="{% url 'login' %}">Login</a>
+                            <a class="btn btn-warning" href="{% url 'signup' %}">Registrarse</a>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                            <a class="margin-right-20" href="{% url 'logout' %}">Salir</a>
+                            <strong class="user_text">Hola: {{request.user}}</strong>
+                            <form class="display-inline" action="/mybooks/" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="email" value="{{request.user.email}}">
+                                <button type="submit" class="btn btn-secondary" href="{% url 'mybooks' %}">Mis reservas</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

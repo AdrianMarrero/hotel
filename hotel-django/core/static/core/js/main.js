@@ -34,21 +34,31 @@ $(document).ready(function(){
         var $datetimepicker = $('#datepicker').datepicker();
         var $datetimepicker2 = $('#datepicker2').datepicker();
         var date_start = $datetimepicker.value();
-        var date_end = $datetimepicker2.value();
-        date_start_comp =  new Date(date_start).getTime();
-        date_end_comp =  new Date(date_end).getTime();
-        if(isNaN(date_start_comp)){
+        if(date_start === ''){
             $('#msj_error').text('Introduce fecha de entrada');
             $('#msj_error').show();
             return false;
-        }else if(isNaN(date_end_comp)){
+        }
+        var date_end = $datetimepicker2.value();
+        if(date_end === ''){
             $('#msj_error').text("Introduce fecha de salida");
             $('#msj_error').show();
             return false;
-        }else if(date_start_comp > date_end_comp){
+        }
+        var formatted_date_start = date_start.split("/");
+        var formatted_date_end = date_end.split("/");
+        formatted_date_start = formatted_date_start[1] + "/" + formatted_date_start[0] + "/" + formatted_date_start[2];
+        formatted_date_end = formatted_date_end[1] + "/" + formatted_date_end[0] + "/" + formatted_date_end[2];
+        date_start_comp =  new Date(formatted_date_start).getTime();
+        date_end_comp =  new Date(formatted_date_end).getTime();
+        if(date_start_comp > date_end_comp){
             $('#msj_error').text("fecha de entrada es mayor a la de salida");
             $('#msj_error').show();
             return false;
+        }else if(date_start_comp === date_end_comp){
+                $('#msj_error').text("La fecha de entrada no puede ser igual a la de salida");
+                $('#msj_error').show();
+                return false;
         }else if(date_start_comp > date_end_comp){
             $('#msj_error').hide();
             $('#msj_error').text('');

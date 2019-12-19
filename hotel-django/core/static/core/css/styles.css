@@ -8,17 +8,29 @@
 .margin-top-20{
     margin-top: 20px;
 }
+.margin-top-25{
+    margin-top: 25px;
+}
+.padding-10{
+    padding: 10px;
+}
 .padding-20{
     padding: 20px;
 }
 .padding-top-20{
     padding-top: 20px;
 }
+.margin-right-20{
+    margin-right: 20px;
+}
 .margin-0-auto{
     margin: 0 auto;
 }
 .display-none{
     display: none;
+}
+.display-inline{
+    display: inline
 }
 /*End common class*/
 
@@ -88,9 +100,11 @@
 .gj-datepicker-bootstrap [role=right-icon] button .gj-icon, .gj-datepicker-bootstrap [role=right-icon] button .material-icons{
     color:#fff
 }
-.btn-primary{
+.btn{
     border-radius: 0;
-    border-color:0; 
+    border-color:0;   
+}
+.btn-primary{
     background-color:#f7c411 none repeat scroll 0 0;
     border-color: #f7c411;
 }
@@ -119,7 +133,7 @@
     width: 100%;
 }
 .user_text{
-    font-size: 11px;
+    margin-right: 20px;
     font-style: italic;
     color: #fff;
     text-transform: capitalize;

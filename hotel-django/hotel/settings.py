@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'book.apps.BookConfig',
     'core',
     'summary',
+    'mybooks'
 
 ]
 
