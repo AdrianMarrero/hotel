@@ -31,7 +31,6 @@ def book(request):
         elif save_form == 'True':
             number_room = prev_form['number_book_conf']
             data_room = room_views.Room.objects.get(number_room=number_room)
-            print(request.POST)
             if form.is_valid():              
                 record_book = form.save(commit=False)
                 record_book.number_book = number_room
@@ -42,10 +41,8 @@ def book(request):
                 form.save_m2m()
                 return redirect('summary', locator=locator_id)
             else:
-                print(form.errors)
                 return render(request, "book/book.html", {'days':days, 'data_room':data_room, 'form':form})    
         else:
-            print('por el final')
             form = BookForm()
             return render(request, "book/book.html",{'form':form})
 

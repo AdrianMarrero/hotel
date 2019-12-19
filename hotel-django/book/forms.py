@@ -29,7 +29,7 @@ class BookForm(forms.ModelForm):
             'total_price': forms.TextInput(attrs={'class':'form-control', 'readonly':'readonly'}),
             'name': forms.TextInput(attrs={'class':'form-control', 'required':'required'}),
             'surname': forms.TextInput(attrs={'class':'form-control', 'required':'required'}),
-            'email': forms.EmailInput(attrs={'class':'form-control', 'required':'required'}),
+            'email': forms.EmailInput(attrs={'class':'form-control', 'required':'required', 'id':'email'}),
             'name_of_card': forms.TextInput(attrs={'class':'form-control', 'required':'required'}),
             'credit_card_number': forms.TextInput(attrs={'class':'form-control', 'required':'required'}),
             'notes': forms.Textarea(attrs={'class':'form-control', 'rows':3, 'placeholder':'Notas'}),

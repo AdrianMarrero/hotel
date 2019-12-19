@@ -32,7 +32,7 @@
                                 <p class="card-text">Precio por noche: <span>{{room.price_room}}€</span></p>
                             </div>
                             <div class="col-md-3 margin-top-20">
-                                {% if request.user.is_authenticated %}
+                                {% if request.user.is_authenticated and request.user.username != user_recepcionista %}
                                     <div class="btn-group">
                                         <form action="/book/" method="post">
                                             {% csrf_token %}

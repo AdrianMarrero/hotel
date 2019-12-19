@@ -24,6 +24,7 @@ urlpatterns = [
     path('book/', include('book.urls')),
     path('summary/', include('summary.urls')),
     path('mybooks/', include('mybooks.urls')),
+    path('management/', include('management.urls')),
     path('admin/', admin.site.urls),
     #Auth
     path('accounts/', include('django.contrib.auth.urls')),

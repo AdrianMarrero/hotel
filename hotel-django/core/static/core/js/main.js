@@ -66,13 +66,26 @@ $(document).ready(function(){
         }
     }); 
 
-
+    $("#form-book").submit(function(e){
+        if (!ValidateEmail($("#email").val())) {
+            alert("Email no valido");
+            return false;
+        }
+        else {
+            return true;
+        }    
+    }); 
 
 });
 
 function hide(){
     $('#msj_error').hide();
 }
+
+function ValidateEmail(email) {
+    var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return expr.test(email);
+};
 
 function buscar(){
     var $datetimepicker = $('#datepicker').datepicker();
